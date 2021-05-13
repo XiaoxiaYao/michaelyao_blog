@@ -14,7 +14,7 @@ You can use Static Generation for many types of pages, including:
 
 You should ask yourself: "Can I pre-render this page **ahead** of a user's request?" If the answer is yes, then you should choose Static Generation.
 
-```shell script
+```shell
 jira_issue_ids = branches\
             .values_list('jira_issue_id', flat=True) \
             .distinct()
