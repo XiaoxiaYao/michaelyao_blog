@@ -1,5 +1,5 @@
 ---
-title: 'Django REST framework API Views 相关学习'
+title: 'Django REST framework API Views 学习'
 date: '2021-05-13'
 ---
 
