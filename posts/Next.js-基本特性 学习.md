@@ -83,4 +83,40 @@ export async function getStaticProps() {
 
 # Routing 路由
 
--
+- `index.js` 解析为: `/`, 比如 `pages/index.js` = `/`, `pages/blog/index` = `/blog`
+
+- 浅路由可以让我们在数据获取前改变 URL. 可以用在同一页面时的 filter 或者排序.
+
+# 身份验证
+
+- 两种方式:
+- 1.SGP + CSR. 这种比较快.
+
+```shell
+/ pages/profile.js
+
+import useUser from '../lib/useUser'
+import Layout from '../components/Layout'
+
+const Profile = () => {
+  // Fetch the user client-side
+  const { user } = useUser({ redirectTo: '/login' })
+
+  // Server-render loading state
+  if (!user || user.isLoggedIn === false) {
+    return <Layout>Loading...</Layout>
+  }
+
+  // Once the user request finishes, show the user
+  return (
+    <Layout>
+      <h1>Your Profile</h1>
+      <pre>{JSON.stringify(user, null, 2)}</pre>
+    </Layout>
+  )
+}
+
+export default Profile
+```
+
+- 2. SSR 在 `getServerSideProps`这里进行登录验证, 比如本地有没有 token 啥的. 这种方式可以防止在`redirect`之前, 未验证用户看到内容.
