@@ -80,3 +80,7 @@ export async function getStaticProps() {
 ```
 
 - 默认加载的变量只会在 node.js 环境中, 如果想暴露到浏览器则必须加: `NEXT_PUBLIC_` 前缀. 这是我们一般这么用的.
+
+# Routing 路由
+
+-
